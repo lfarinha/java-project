@@ -2,19 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh 'ant -f test.xml -v'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'ant -f build.xml -v'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+            }
+        }
+        stage('Report') {
+            steps {
+                echo 'Reporting....'
             }
         }
     }
