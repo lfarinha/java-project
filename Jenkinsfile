@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'aws s3 cp /workspace/JavaPipeline/reports/*'
             }
         }
         stage('Report') {
