@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'aws s3 cp /workspace/JavaPipeline/reports/* s3://javaprojectbucket'
+                sh 'aws s3 cp /workspace/JavaPipeline/dist/* s3://javaprojectbucket'
             }
         }
         stage('Report') {
