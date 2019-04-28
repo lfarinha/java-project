@@ -19,8 +19,9 @@ pipeline {
         }
         stage('Report') {
             steps {
-                sh 'serverless config credentials --provider aws --key  AKIATGKM2XWEDQFRWTP4 --secret 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'
-                sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: ' AKIATGKM2XWEAJZMBUMI', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
+                }
             }
         }
     }
